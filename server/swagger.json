@@ -1,0 +1,33 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/swagger.json": {
+            "get": {
+                "tags": [],
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Returns the swagger.json document"
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/auth": {
+            "get": {
+                "tags": [],
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "Gets the auth"
+                    }
+                },
+                "parameters": []
+            }
+        }
+    }
+}
