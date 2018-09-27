@@ -1,9 +1,13 @@
 let express = require('express'),
     swaggerSpec = require('swagger-spec-express'),
     swaggerUi = require('swagger-ui-express'),
-    packageJson = require('./package.json');
+    packageJson = require('./package.json'),
+    bodyParser = require('body-parser');
 
 let app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 let swaggerSpecOptions = {
     title: packageJson.title,
@@ -24,7 +28,7 @@ app.get('/swagger.json', (err, res) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, swaggerUiOptions));
 app.use('/api/v1', express.Router());
 
-app.use(require('./controllers/index'));
+app.use(require('./routes/index'));
 
 swaggerSpec.compile();
 
