@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Login from './components/login';
+import Login from './components/login/login';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
