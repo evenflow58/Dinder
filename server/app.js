@@ -11,12 +11,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let swaggerSpecOptions = {
     title: packageJson.title,
-    version: packageJson.version
+    version: packageJson.version,
+    securityDefinitions: {
+        jwt: {
+            type: 'apiKey',
+            in: 'header',
+            name: 'Authorization'
+        }
+    }
 };
 
 let swaggerUiOptions = {
     swaggerUrl: 'http://localhost:3000/swagger.json',
-    explorer: true
+    authAction: {
+        JWT: {
+            name: "JWT",
+            schema: {
+                type: "apiKey",
+                in: "header",
+                name: "Authorization",
+                description: ""
+            },
+            value: "Bearer <JWT>"
+        }
+    }
 };
 
 swaggerSpec.initialise(app, swaggerSpecOptions);
